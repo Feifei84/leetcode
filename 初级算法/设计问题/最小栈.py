@@ -9,3 +9,39 @@ void pop() 删除堆栈顶部的元素。
 int top() 获取堆栈顶部的元素。
 int getMin() 获取堆栈中的最小元素。
 '''
+
+
+class MinStack:
+    def __init__(self):
+        self.L = []
+
+    def push(self, val: int) -> None:
+        self.L.append(val)
+
+    def pop(self) -> None:
+        self.L.pop()
+
+    def top(self) -> int:
+        return self.L[-1]
+
+    def getMin(self) -> int:
+        return min(self.L)
+
+class MinStack2:
+    def __init__(self):
+        self.L = []
+        self.min = [2**31]
+
+    def push(self, val: int) -> None:
+        self.L.append(val)
+        self.min.append(min(val, self.min[-1]))
+
+    def pop(self) -> None:
+        self.L.pop()
+        self.min.pop()
+
+    def top(self) -> int:
+        return self.L[-1]
+
+    def getMin(self) -> int:
+        return self.min[-1]

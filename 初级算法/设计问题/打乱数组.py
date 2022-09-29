@@ -7,9 +7,11 @@ Solution(int[] nums) 使用整数数组 nums 初始化对象
 int[] reset() 重设数组到它的初始状态并返回
 int[] shuffle() 返回数组随机打乱后的结果
 '''
+import random
 from random import shuffle as sf
-class Solution:
 
+
+class Solution:
     def __init__(self, nums: list[int]):
         self.L = nums
 
@@ -17,9 +19,15 @@ class Solution:
         return self.L
 
     def shuffle(self) -> list[int]:
+        # L = self.L[:]
+        # sf(L)
+        # return L
         L = self.L[:]
-        sf(L)
+        for i in range(len(L)):
+            j = random.randrange(i, len(L))
+            L[i], L[j] = L[j], L[i]
         return L
+
 
 S = Solution([1, 2, 3])
 print(S.shuffle())
